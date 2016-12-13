@@ -1,6 +1,6 @@
 {
-  "name": "wx-tools",
-  "version": "1.0.0",
+  "name": "wx-tools-sdk",
+  "version": "0.0.1",
   "description": "weixin ac-token,jssdk,signpackage",
   "main": "wxsdk.js",
   "scripts": {

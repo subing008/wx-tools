@@ -135,4 +135,57 @@ wxsdk.prototype = {
       return callback(null,ret);
     })
   },
+
+  createMenus: function(menus,callback){
+    this.getAccessToken(function(err,actoken){
+      if(err){
+        return callback(err,'createmenus failed!');
+      }
+
+      request.post({url:`https://api.weixin.qq.com/cgi-bin/menu/create?access_token=${actoken}`,json:menus},function(err,res,body){
+        if (err) {
+          return callback(err,'menu create failed');
+        }
+
+        return callback(null,'menu create success');
+      });
+    });
+  },
+
+  _upload: function(type, filepath, callback){
+    let form = {
+      media: fs.createReadStream(filepath)
+    }
+
+    this.getAccessToken(function(err,actoken){
+      if (err) {
+        return callback(err);
+      }
+      
+      let url = `https://api.weixin.qq.com/cgi-bin/media/upload?access_token=${actoken}&type=${type}`;
+      request({method:'POST',url:url,formData: form,json:true}, function(err,data){
+        if(err){
+          return callback(err);
+        }
+
+        return callback(null,data.body);
+      });
+    })
+  },
+
+  uploadImage: function(filepath,callback){
+    this._upload('image',filepath,callback);
+  },
+
+  uploadVoice: function(filepath,callback){
+    this._upload('voice',filepath,callback);
+  },
+
+  uploadvideo: function(filepath,callback){
+    this._upload('video',filepath,callback);
+  },
+
+  uploadthumb: function(filepath,callback){
+    this._upload('thumb',filepath,callback);
+  },
 }
