@@ -16,25 +16,35 @@ $ npm install wx-tools-sdk
 ```
 
 ## Use with Connect/Express
-
+```js
 var wxsdk = require('wx-tools-sdk')('appid','secret');
+```
 
 ## 获取acesstoken
+```js
+
 wxsdk.getAccessToken(function(err,token){
     //TODO
 })
+```
 
 ## 获取jsapiTicket
+```js
+
 wxsdk.getJsApiTicket(function(err,ticket){
     //TODO
 })
+```
 
 ## 获取signpackage
+```js
 wxsdk.getSignPackage(url,function(err,ticket){
     //TODO
 })
+```
 
 ##创建菜单
+```js
 var menus = {
   "button":[
     {
@@ -47,8 +57,10 @@ var menus = {
 wxsdk.createMenus(menus,function(err,result){
 
 })
+```
 
 ##上传临时素材
+```js
 wxsdk.uploadImage('xx/xx/1.jpg',function(err,result){
     //result {"type":"TYPE","media_id":"MEDIA_ID","created_at":123456789}
 })
@@ -64,3 +76,4 @@ wxsdk.uploadvideo('xx/xx/1.mp4',function(err,result){
 wxsdk.uploadthumb('xx/xx/1.jpg',function(err,result){
     //result {"type":"TYPE","media_id":"MEDIA_ID","created_at":123456789}
 })
+```

@@ -7,8 +7,6 @@ const config = {
   jsapiFileL: '.jssdktoken.json',
 }
 
-exports = module.exports = wxsdk;
-
 function wxsdk(appid,appsecret){
   if(!(this instanceof wxsdk)){
     return new wxsdk(appid,appsecret);
@@ -189,3 +187,5 @@ wxsdk.prototype = {
     this._upload('thumb',filepath,callback);
   },
 }
+
+module.exports = wxsdk;
